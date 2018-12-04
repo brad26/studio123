@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".form">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,30 +16,38 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/peachborder"
             android:id="@+id/layoutNama">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/etNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nama"
+                android:textColor="#fff"
                 android:inputType="text"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
             android:id="@+id/layoutNope">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/etNope"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nomor Handphone"
+
                 android:inputType="number"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
+
             android:id="@+id/layoutAlamat">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/etAlamat"
@@ -51,75 +61,107 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerModel"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
             >
         </Spinner>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
+
             android:id="@+id/layoutHarga">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/etHarga"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Harga"
-                android:inputType="text"
+                android:inputType="number"
                 android:focusable="false"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
+
             android:id="@+id/layoutOngkir">
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/etOngkir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ongkir"
-                android:inputType="text"
+                android:inputType="number"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
+
+            android:id="@+id/layoutNoRek">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/etNoRek"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="No Rekening"
+                android:inputType="number"
                 />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutPembayaran">
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
+
+            android:id="@+id/layoutPembayaran">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/etPembayaran"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Pembayaran"
-            android:inputType="text"
+            android:inputType="number"
             />
     </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnkembali"
-            android:text="kembalian"/>
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/btnkembali"-->
+            <!--android:background="@drawable/peachborder"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:text="kembalian"/>-->
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/layoutKembalian">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/etKembalian"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Kembalian"
-                android:inputType="text"
-                />
-        </android.support.design.widget.TextInputLayout>
+        <!--<android.support.design.widget.TextInputLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/peachborder"-->
+            <!--android:layout_marginTop="5dp"-->
+
+            <!--android:id="@+id/layoutKembalian">-->
+            <!--<android.support.design.widget.TextInputEditText-->
+                <!--android:id="@+id/etKembalian"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Kembalian"-->
+                <!--android:inputType="text"-->
+                <!--/>-->
+        <!--</android.support.design.widget.TextInputLayout>-->
 
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnSimpan"
+            android:background="@drawable/peachborder"
+            android:layout_marginTop="5dp"
             android:text="simpan"/>
-
-
-
     </LinearLayout>
+</ScrollView>
 </android.support.constraint.ConstraintLayout>

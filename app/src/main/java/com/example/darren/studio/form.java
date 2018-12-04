@@ -1,5 +1,7 @@
 package com.example.darren.studio;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +26,11 @@ import java.util.Map;
 
 public class form extends AppCompatActivity {
 
-    EditText etHarga, etKembalian, etPembayaran,etOngkir;
+
+    EditText etOngkir, etNama, etNope, etAlamat, etHarga, etNoRek, etPembayaran;
+    AlertDialog dialog;
     Button btnkembalian, btnSimpan;
+    AlertDialog.Builder builder,builder3;
     List<jenis> jenisList = new ArrayList<>();
     List<String> namaList = new ArrayList<>();
 
@@ -65,13 +70,20 @@ public class form extends AppCompatActivity {
         namaList.add("Mini Button Metalic");
         namaList.add("Passport Flip Metalic");
 
-        Spinner spinner = findViewById(R.id.spinnerModel);
+        builder = new AlertDialog.Builder(this);
+        builder3 = new AlertDialog.Builder(this);
+        final Spinner spinner = findViewById(R.id.spinnerModel);
+        etNama = findViewById(R.id.etNama);
+        etNope = findViewById(R.id.etNope);
+        etAlamat = findViewById(R.id.etAlamat);
         etHarga = findViewById(R.id.etHarga);
-        etKembalian = findViewById(R.id.etKembalian);
-        etPembayaran = findViewById(R.id.etPembayaran);
-        btnkembalian = findViewById(R.id.btnkembali);
-        btnSimpan = findViewById(R.id.btnSimpan);
         etOngkir = findViewById(R.id.etOngkir);
+        etNoRek = findViewById(R.id.etNoRek);
+//        etKembalian = findViewById(R.id.etKembalian);
+        etPembayaran = findViewById(R.id.etPembayaran);
+//        btnkembalian = findViewById(R.id.btnkembali);
+        btnSimpan = findViewById(R.id.btnSimpan);
+
 
         ArrayAdapter<String> SpinnerAdapter = new ArrayAdapter<String>
                 (getApplicationContext(), android.R.layout.simple_list_item_1, namaList);
@@ -96,13 +108,181 @@ public class form extends AppCompatActivity {
             }
         });
 
-        btnkembalian.setOnClickListener(new View.OnClickListener() {
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i=hitungKembalian(Integer.parseInt(etHarga.getText().toString()),Integer.parseInt(etPembayaran.getText().toString()) ,Integer.parseInt(etOngkir.getText().toString()));
-                etKembalian.setText(String.valueOf(i));
+                if (etNama.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi Nama");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etNama.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+
+                } else if (etNope.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi Nomor Hape");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etNope.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+                } else if (etAlamat.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi Alamat");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etAlamat.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+                } else if (spinner.getSelectedItem().toString().equals("type")) {
+                    builder.setMessage("Harap pilih model");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etAlamat.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+
+                } else if (etHarga.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi harga");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etHarga.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+                } else if (etOngkir.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi ongkir");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etOngkir.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+                } else if (etNoRek.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi nomor rekening");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etNoRek.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+                } else if (etPembayaran.getText().toString().equals("")) {
+                    builder.setMessage("Harap isi jumlah pembayaran");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            etPembayaran.requestFocus();
+                        }
+                    });
+                    dialog = builder.show();
+                } else {
+                    builder.setMessage("Apakah anda yakin sudah benar? Tekan OK untuk menyimpan");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialog = builder.show();
+
+                }
+
             }
         });
+
+
+//        btnSimpan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                builder.setMessage("Apakah Data Anda sudah benar?");
+//                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        if (etNama.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Nama");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etNama.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                        } else if (etNope.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Alamat Anda");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etNope.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                        } else if (etAlamat.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Kota Anda");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etAlamat.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                        } else if (etHarga.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Kota Anda");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etHarga.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                        } else if (etOngkir.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Kota Anda");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etOngkir.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                        } else if (etNoRek.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Kota Anda");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etNoRek.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                        } else if (etPembayaran.getText().toString().equals("")) {
+//                            builder3.setMessage("Harap isi Kota Anda");
+//                            builder3.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    etPembayaran.requestFocus();
+//                                }
+//                            });
+//                            builder3.show();
+//                            dialog = builder.show();
+//                        } else {
+//
+//                        }
+//                    }
+//
+//                });
+//                int i=hitungKembalian(Integer.parseInt(etHarga.getText().toString()),Integer.parseInt(etPembayaran.getText().toString()) ,Integer.parseInt(etOngkir.getText().toString()));
+//                etKembalian.setText(String.valueOf(i));
+//            }
+//        });
 //        btnSimpan.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
